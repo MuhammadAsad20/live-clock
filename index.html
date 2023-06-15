@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clock</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: black;
+        }
+
+        #clock_box {
+            height: 25%;
+            width: 35%;
+           font-family: Arial, Helvetica, sans-serif;
+           color: white;
+           font-weight: bold;
+           position: absolute;
+           top: 50%;
+           left: 50%;
+           transform: translate(-50% , -50%);
+           font-size: 70px;
+           border: 1px solid white;
+            background-color: rgb(86, 2, 86);
+            display: flex;
+            align-items: center;
+            justify-content: space-evenly;
+            border-radius: 20%;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="clock_box">
+            <span id="hours">00</span>
+            <span>:</span>
+            <span id="minutes">00</span>
+            <span>:</span>
+            <span id="seconds">00</span>
+            <span id="session">AM</span>
+    </div>
+    <script>
+       
+
+        function displayTime() {
+            var displayTime = new Date()
+            var hrs = displayTime.getHours()
+            var min = displayTime.getMinutes()
+            var sec = displayTime.getSeconds()
+            var session = document.getElementById('session')
+
+            if(hrs > 12){
+                hrs = hrs - 12
+                session.innerHTML = 'PM'
+            }
+            else{
+                session.innerHTML = 'AM'
+            }
+            if(hrs < 10){
+                hrs = "0" + hrs
+            }
+            if(min < 10){
+                sec = "0" + sec
+            }
+            if(sec < 10){
+                sec = "0" + sec
+            }
+
+            document.getElementById('hours').innerHTML = hrs
+            document.getElementById('minutes').innerHTML = min
+            document.getElementById('seconds').innerHTML = sec
+        }
+        setInterval(displayTime)
+    </script>
+
+</body>
+
+</html>
